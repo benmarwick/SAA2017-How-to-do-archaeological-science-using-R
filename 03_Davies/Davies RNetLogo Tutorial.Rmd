@@ -1,5 +1,5 @@
 ---
-title: "Using R and NetLogo: SAA-DDIG RNetLogo Demo"
+title: "Agent-based modelling prehistoric landscape use with R and NetLogo"
 author: "Ben Davies"
 date: "March 18, 2017"
 output:

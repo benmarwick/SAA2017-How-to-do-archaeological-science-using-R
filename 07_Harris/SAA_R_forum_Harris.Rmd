@@ -231,11 +231,11 @@ m <-  mapview(model_sum,
 m
 
 ## save to html
-htmlwidgets::saveWidget(widget = m@map, file = "map.html")
+htmlwidgets::saveWidget(widget = m@map, file = paste0(getwd(), "/", "map.html")
 
 ## save html to png 
-webshot::webshot(url = "map.html", 
-                 file = "map.png")
+webshot::webshot(url = paste0(getwd(), "/", "map.html"), 
+                 file = paste0(getwd(), "/", "map.png"))
 
 ```
 ![](map.png)
