@@ -229,16 +229,8 @@ m <-  mapview(model_sum,
               col.regions = viridisLite::magma, 
               maxpixels =  897336)
 m
-
-## save to html
-htmlwidgets::saveWidget(widget = m@map, file = paste0(getwd(), "/", "map.html")
-
-## save html to png 
-webshot::webshot(url = paste0(getwd(), "/", "map.html"), 
-                 file = paste0(getwd(), "/", "map.png"))
-
 ```
-![](map.png)
+
 
 ### Model Validation
 
@@ -353,9 +345,30 @@ model_pref[["df"]] %>%
 The final classified raster and sites are rendered with `mapview()`.
 *unfortunately this is not rendering in the knit R markdown version
 
-```{r mapview_prediction}
-mapview(model_class, col.regions = viridisLite::viridis, alpha = 0.75, maxpixels =  897336) +
-  mapview(sites_sum, col.regions = viridisLite::magma, maxpixels =  897336)
+```{r mapview_prediction, results='hide' }
+m <- mapview(model_class, 
+             col.regions = viridisLite::viridis, 
+             alpha = 0.75, 
+             maxpixels =  897336) +
+     mapview(sites_sum, 
+             col.regions = viridisLite::magma, 
+             maxpixels =  897336)
+```
+
+```{r eval = TRUE, echo = FALSE}
+### Mapview screenshot
+
+# for some reason the map does not display, so let's get a screenshot of it
+
+## save to html
+htmlwidgets::saveWidget(widget = m@map, 
+                        file = paste0(getwd(), "/", "map.html"))
+
+## save html to png 
+webshot::webshot(url = paste0(getwd(), "/", "map.html"), 
+                 file = paste0(getwd(), "/", "map.png"))
+
+# knitr::include_graphics( paste0(getwd(), "/", "map.png"))
 ```
 
 
